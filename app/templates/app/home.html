@@ -1,6 +1,24 @@
-{% extends 'app/base.html' %}
+<!DOCTYPE html>
 {% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Cleanup Community</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
 {% block content %}
-    <h1>home page</h1>
-<img class="mylogo" src="{% static 'images/risha.ico' %}">
+    <div class="banner">
+        <div class="navbar">
+            {% include 'app/navbar.html' %}
+        </div>
+        <div class="banner-content">
+            <h1>Welcome to Cleanup Community</h1>
+            <p>Join us in making the world a cleaner, greener place!</p>
+            <a href="#about" class="btn">Learn More</a>
+        </div>
+    </div>
 {% endblock content %}
+</body>
+</html>

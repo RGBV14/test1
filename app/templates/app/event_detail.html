@@ -1,0 +1,18 @@
+{% include 'app/base.html' %}
+{% load static %}
+{% block content %}
+<br><br><br><br><br>
+<link rel="stylesheet" href="{% static 'css/event_detail.css' %}">
+<div class="post-entry">
+    <h2><a href=""> {{Events.title}}</a> </h2>
+    <p>Description: {{Events.description}}</p>
+    <p>Location:  {{Events.location}}</p>
+    <p>Date:        {{Events.event_date}}</p>
+    <p>Start Time:  {{Events.start_time}}</p>
+    <p>End Time:    {{Events.end_time}}</p>
+    <p>Maximum Volunteers: {{Events.max_volunteers}}</p>
+</div>
+    <a href="{% url 'event_update' object.pk %}">+ Update Event</a><br>
+    <a href="{% url 'event_delete' object.pk %}">- Delete Event</a><br>
+    <a href="/services">Back</a>
+{% endblock content %}

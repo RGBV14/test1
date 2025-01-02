@@ -1,0 +1,13 @@
+{% include 'app/base.html' %}
+{% load static %}
+{% block content %}
+<br><br><br><br><br>
+<link rel="stylesheet" href="{% static 'css/event_delete.css' %}">
+    <h1>Add New Event</h1>
+    <form action="{% url 'event_delete' object.pk %}" method="post">
+        {% csrf_token %}
+        <p> are you sure want to delete" {{Event.title}}"?</p>
+        <input type="submit" value="Confirm">
+        <a href="/services">Back</a>
+    </form>
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% include 'app/base.html' %}
+{% load static %}
+{% block content %}
+<br><br><br><br><br>
+<h1>Create Event</h1>
+<link rel="stylesheet" href="{% static 'css/event_create.css' %}">
+<form action="{% url 'event_create' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+    <a href="/services">Back to Events</a>
+</form>
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% include 'app/base.html' %}
+{% load static %}
+{% block content %}
+<br><br><br><br><br>
+<link rel="stylesheet" href="{% static 'css/event_list.css' %}">
+<a href="{% url 'event_create' %}">+ Add Event</a>
+{% for Events in Event %}
+    <div class="post-entry">
+        <h2><a href="{% url 'event_detail' Events.pk %}">{{ Events.title }}</a></h2>
+        <p>{{ Events.description }}</p>
+    </div>
+{% empty %}
+    <p>No event available. <a href="{% url 'event_create' %}">Add a new event</a>!</p>
+{% endfor %}
+{% endblock content %}
