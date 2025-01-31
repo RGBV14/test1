@@ -2,6 +2,14 @@ from django.db import models
 from django.urls import reverse
 
 
+class Admin(models.Model):
+    firstname = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=100)
+    username = models.CharField(max_length=100, unique=True)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=100)
+
+
 class User(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
@@ -14,7 +22,7 @@ class User(models.Model):
 
 class Event(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(max_length =300)
     location = models.CharField(max_length=255)
     event_date = models.DateField()
     start_time = models.TimeField()
@@ -35,7 +43,7 @@ class VolunteerRegistration(models.Model):
     task_assigned = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"{self.user.name} registered for {self.event.title}"
+        return f"{self.user} registered for {self.event.title}"
 
 
 class EnvironmentalResource(models.Model):

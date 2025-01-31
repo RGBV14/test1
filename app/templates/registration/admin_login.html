@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="{% static 'css/admin_login.css' %}">
+</head>
+<body>
+    <div class="login">
+        <h1>Admin Form</h1>
+        <form id="login" action="{% url 'login_admin' %}" method="post">
+            {% csrf_token %}
+
+            <label for="username">User Name:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your Username" required>
+            {% for error in form.username.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter a secure password">
+            {% for error in form.password.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <input type="submit" value="Login">
+        </form>
+        <h3>This is for admin only!</h3>
+        <a href="{% url 'login' %}" class="register-link">Back to Login</a>
+    </div>
+</body>
+</html>

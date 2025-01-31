@@ -4,51 +4,18 @@ body, h1, h2, p, a {
     padding: 0;
     font-family: 'Arial', sans-serif;
     text-decoration: none;
-    color: inherit;
+    color: #123524;
 }
 
 body {
-    background-color: #f5f5f5;
+    background-color: #000;
     color: #333;
-}
-
-/* Navbar */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
-    position: fixed;
-    width: 100%;
-    z-index: 100;
-}
-
-.navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.navbar ul li {
-    display: inline-block;
-}
-
-.navbar ul li a {
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.navbar ul li a:hover {
-    background-color: #28a745;
 }
 
 /* Banner Section */
 .banner {
     height: 100vh;
-    background: url('../images/banner.jpg') no-repeat center center/cover;
+    background: url('../images/cleanup3.jpg') no-repeat center center/cover;
     color: #fff;
     text-align: center;
     display: flex;
@@ -85,7 +52,7 @@ body {
 .banner .btn {
     padding: 10px 20px;
     font-size: 1.2rem;
-    background-color: #28a745;
+    background-color: #123524;
     color: #fff;
     border-radius: 5px;
     transition: background-color 0.3s;

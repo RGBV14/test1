@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clean Up Community</title>
+    <link rel="stylesheet" href="{% static 'css/admin_recognition.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>Recognition Form</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">back</a>
+        </div>
+        <p class="intro-text">Please fill in the details below to add new user.</p>
+        <form id="recognitionForm" action="{% url 'add_recognition' %}" method="post">
+            {% csrf_token %}
+            <label for="user">User:</label>
+            {{ form.user }}
+            {% for error in form.user.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="event">Event:</label>
+            {{ form.event }}
+            {% for error in form.event.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="recognition_text">Recognition Text:</label>
+            <input type="text" id="recognition_text" name="recognition_text">
+            {% for error in form.recognition_text.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+        <input type="submit" value="Save">
+        <a href="/database">Back</a>
+
+        </form>
+    </div>
+</body>
+</html>

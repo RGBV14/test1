@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clean Up Community</title>
+    <link rel="stylesheet" href="{% static 'css/volunteer.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>Volunteer Registration Form</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">back</a>
+        </div>
+        <p class="intro-text">Please fill in the details below to add new user.</p>
+        <form id="volunteerregistrationForm" action="{% url 'add_volunteerregistration' %}" method="post">
+            {% csrf_token %}
+            <label for="event">Event:</label>
+            {{ form.event }}
+            {% for error in form.event.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="user">User:</label>
+            {{ form.user}}
+            {% for error in form.user.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="task_assigned">Task Assigned:</label>
+            <input type="text" id="task_assigned" name="task_assigned">
+            {% for error in form.task_assigned.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+
+            <input type="submit" value="Save">
+            <a href="{% url 'services' %}" class="back-button" onclick="return confirmBack();">back</a>
+        </form>
+    </div>
+</body>
+</html>

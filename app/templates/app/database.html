@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Overview</title>
+    <link rel="stylesheet" href="{% static 'css/database.css' %}">
+
+</head>
+<body onload="ShowDashboard()">
+    <div class="container">
+        <!-- Sidebar -->
+        <button class="burger-menu" onclick="toggleSidebar()">☰</button>
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <h2>Admin Dashboard</h2>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
+                    <li><a href="#" onclick="showSection('user')">Users</a></li>
+                    <li><a href="#" onclick="showSection('event')">Event</a></li>
+                    <li><a href="#" onclick="showSection('volunteerregistration')">VolunteerRegistration</a></li>
+                    <li><a href="#" onclick="showSection('environmentalresource')">EnvironmentalResource</a></li>
+                    <li><a href="#" onclick="showSection('impactreport')">ImpactReport</a></li>
+                    <li><a href="#" onclick="showSection('recognition')">Recognition</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+            <main class="main-content">
+            <header>
+                <h1>Welcome to my Admin Dashboard</h1>
+            </header>
+
+            <!-- Content Sections -->
+            <section id="dashboard" class="content-section">
+                <h2>Dashboard</h2>
+                <div class="dashboard-stats">
+                    <div class="stat-item">
+                        <h3>Users</h3>
+                        <p>{{ user_count }}</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Events</h3>
+                        <p>{{ event_count }}</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Volunteer Registration</h3>
+                        <p>{{ volunteerregistration_count }}</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Environmental Resource</h3>
+                        <p>{{ environmentalresource_count }}</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Impact Reports</h3>
+                        <p>{{ ImpactReport_count }}</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Recognition</h3>
+                        <p>{{ recognition_count }}</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.style.display = 'none');
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+
+            <section id="user" class="content-section">
+                <h2>Users</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'add_user' %}'">Add</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Join Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in user %}
+                        <tr>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.password }}</td>
+                            <td>{{ user.join_date }}</td>
+                            <td>
+                                <button class="edit-button" onclick="window.location.href='{% url 'update_user' user.pk %}'" >Edit</button>
+                                <button class="delete-button" onclick="window.location.href='{% url 'delete_user' user.pk %}'" >Delete</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+
+
+            <section id="event" class="content-section" style="display: none;">
+                <h2>Event</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'add_event' %}'">add</button>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Location</th>
+                        <th>Event Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Max Volunteers</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="eventTableBody">
+                        {% for event in event %}
+                    <tr>
+                        <td>{{ event.title }}</td>
+                        <td>{{ event.description }}</td>
+                        <td>{{ event.location }}</td>
+                        <td>{{ event.start_time }}</td>
+                        <td>{{ event.start_date }}</td>
+                        <td>{{ event.end_time }}</td>
+                        <td>{{ event.max_volunteers }}</td>
+                        <td>
+                            <button class="edit-button" onclick="window.location.href='{% url 'update_event' event.pk %}'" >Edit</button>
+                            <button class="delete-button" onclick="window.location.href='{% url 'delete_event' event.pk %}'" >Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+
+            <section id="volunteerregistration" class="content-section" style="display: none;">
+                <h2>Volunteer Registration</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'add_volunteerregistration' %}'">add</button>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>User</th>
+                        <th>Registration Date</th>
+                        <th>Task Assigned</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="volunteerregistrationTableBody">
+                        {% for volunteerregistration in volunteerregistration %}
+                    <tr>
+                        <td>{{ volunteerregistration.event }}</td>
+                        <td>{{ volunteerregistration.user }}</td>
+                        <td>{{ volunteerregistration.registration_date }}</td>
+                        <td>{{ volunteerregistration.task_assigned }}</td>
+                        <td>
+                            <button class="edit-button" onclick="window.location.href='{% url 'update_volunteerregistration' volunteerregistration.pk %}'">Edit</button>
+                            <button class="delete-button" onclick="window.location.href='{% url 'delete_volunteerregistration' volunteerregistration.pk %}'" >Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+
+            <section id="environmentalresource" class="content-section" style="display: none;">
+                <h2>Environmental Resource</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'add_environmentalresource' %}'">add</button>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Resource Type</th>
+                        <th>Created At</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="environmentalresourceTableBody">
+                        {% for environmentalresource in environmentalresource %}
+                    <tr>
+                        <td>{{ environmentalresource.title }}</td>
+                        <td>{{ environmentalresource.content }}</td>
+                        <td>{{ environmentalresource.resource_type }}</td>
+                        <td>{{ environmentalresource.created_at }}</td>
+                        <td>
+                            <button class="edit-button" onclick="window.location.href='{% url 'update_environment' environmentalresource.pk %}'">Edit</button>
+                            <button class="delete-button" onclick="window.location.href='{% url 'delete_environment' environmentalresource.pk %}'" >Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+
+            <section id="impactreport" class="content-section" style="display: none;">
+                <h2>Impact Report</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'add_impactreport' %}'">add</button>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Waste Collected Kg</th>
+                        <th>Participant Testimonials</th>
+                        <th>Report Date</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="impactreportTableBody">
+                        {% for impactreport in impactreport %}
+                    <tr>
+                        <td>{{ impactreport.event }}</td>
+                        <td>{{ impactreport.waste_collected_kg }}</td>
+                        <td>{{ impactreport.participant_testimonials }}</td>
+                        <td>{{ impactreport.report_date }}</td>
+                        <td>
+                            <button class="edit-button" onclick="window.location.href='{% url 'update_impactreport' impactreport.pk %}'">Edit</button>
+                            <button class="delete-button" onclick="window.location.href='{% url 'delete_impactreport' impactreport.pk %}'" >Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+
+            <section id="recognition" class="content-section" style="display: none;">
+                <h2>Recognition</h2>
+                <button class="add-button" onclick="window.location.href='{% url 'add_recognition' %}'">add</button>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Event</th>
+                        <th>Recognition Text</th>
+                        <th>Date Awarded</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="recognitionTableBody">
+                        {% for recognition in recognition %}
+                    <tr>
+                        <td>{{ recognition.user }}</td>
+                        <td>{{ recognition.event }}</td>
+                        <td>{{ recognition.recognition_text }}</td>
+                        <td>{{ recognition.date_awarded }}</td>
+                        <td>
+                            <button class="edit-button" onclick="window.location.href='{% url 'update_recognition' recognition.pk %}'">Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+        </main>
+    </div>
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.style.display = 'none');
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

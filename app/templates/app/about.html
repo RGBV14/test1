@@ -1,6 +1,103 @@
+<!DOCTYPE html>
 {% load static %}
-{% block content %}
-    <link rel="stylesheet" href="{% static 'css/services.css' %}">
-
 {% include 'app/navbar.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/css/about.css' %}">
+</head>
+<body>
+
+    <!-- About Section -->
+    <div class="about-section">
+        <h1>About Clean Up Community</h1>
+        <p>
+            Clean Up Community is a grassroots movement dedicated to tackling environmental challenges through community action. Our mission is to bring together individuals, organizations, and local governments to make a real difference in our environment.
+        </p>
+        <p>
+            Through organized clean-up events, educational programs, and sustainability initiatives, we aim to raise awareness about waste management, promote recycling efforts, and protect our natural resources. Our volunteer-driven approach ensures that everyone can contribute to the preservation of our planet.
+        </p>
+        <p>
+            Join us today in making a positive impact on our environment! Every small effort counts towards building a cleaner and greener world.
+        </p>
+    </div>
+
+    <!-- Environmental Resources Section -->
+    <h2>Environmental Resource</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Resource Type</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="environmentalresourceTableBody">
+            {% for environmentalresource in environmentalresource %}
+        <tr>
+            <td>{{ environmentalresource.title }}</td>
+            <td>{{ environmentalresource.content }}</td>
+            <td>{{ environmentalresource.resource_type }}</td>
+            <td>{{ environmentalresource.created_at }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Impact Report Section -->
+    <h2>Impact Report</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Event</th>
+            <th>Waste Collected Kg</th>
+            <th>Participant Testimonials</th>
+            <th>Report Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="impactreportTableBody">
+            {% for impactreport in impactreport %}
+        <tr>
+            <td>{{ impactreport.event }}</td>
+            <td>{{ impactreport.waste_collected_kg }}</td>
+            <td>{{ impactreport.participant_testimonials }}</td>
+            <td>{{ impactreport.report_date }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Recognition Section -->
+    <h2>Recognition</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>User</th>
+            <th>Event</th>
+            <th>Recognition Text</th>
+            <th>Date Awarded</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="recognitionTableBody">
+            {% for recognition in recognition %}
+        <tr>
+            <td>{{ recognition.user }}</td>
+            <td>{{ recognition.event }}</td>
+            <td>{{ recognition.recognition_text }}</td>
+            <td>{{ recognition.date_awarded }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock content %}
+</body>
+</html>

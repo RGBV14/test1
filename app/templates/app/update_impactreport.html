@@ -1,0 +1,39 @@
+{% load static %}
+<head>
+    <title>Update Environmental Resource</title>
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+</head>
+{% block content %}
+    <div class="form-container">
+        <div class="header">
+            <h1>Update Impact Report</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">
+                <i class="ri-close-line"></i>
+            </a>
+        </div>
+        <p class="intro-text">Please update the details below for the Impact Report.</p>
+        <form action="{% url 'update_impactreport' object.pk %}" method="post">
+            {% csrf_token %}
+            <label for="event">Event:</label>
+            {{ form.event }}
+            {% for error in form.event.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="waste_collected_kg">Waste Collected (Kg):</label>
+            <input type="number" id="waste_collected_kg" name="waste_collected_kg" step="0.01" min="0" value="{{ impactreport.waste_collected_kg }}">
+            {% for error in form.waste_collected_kg.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="participant_testimonials">Participant Testimonials:</label>
+            <input type="text" id="participant_testimonials" name="participant_testimonials" value="{{ impactreport.participant_testimonials }}">
+            {% for error in form.participant_testimonials.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+        <input type="submit" value="Save">
+            <a href="/database">Back</a>
+        </form>
+    </div>
+{% endblock content %}

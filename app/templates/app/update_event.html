@@ -1,0 +1,63 @@
+{% load static %}
+<head>
+    <title>Update Event</title>
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+</head>
+{% block content %}
+    <div class="form-container">
+        <div class="header">
+            <h1>Update Event</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">
+                <i class="ri-close-line"></i>
+            </a>
+        </div>
+        <p class="intro-text">Please update the details below for the Event.</p>
+        <form action="{% url 'update_event' object.pk %}" method="post">
+            {% csrf_token %}
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="{{ event.title }}">
+            {% for error in form.title.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" value="{{ event.description }}">
+            {% for error in form.description.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" value="{{ event.location }}">
+            {% for error in form.location.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="event_date">Event Date:</label>
+            <input type="date" id="event_date" name="event_date" value="{{ event.event_date }}">
+            {% for error in form.event_date.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="start_time">Start Time:</label>
+            <input type="time" id="start_time" name="start_time" value="{{ event.start_time }}">
+            {% for error in form.start_time.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="end_time">End Time:</label>
+            <input type="time" id="end_time" name="end_time" value="{{ event.end_time }}">
+            {% for error in form.start_time.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="max_volunteers">Max Volunteers:</label>
+            <input type="number" id="max_volunteers" name="max_volunteers" value="{{ event.max_volunteers }}">
+            {% for error in form.max_volunteers.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+        <input type="submit" value="Save">
+            <a href="/database">Back</a>
+        </form>
+    </div>
+{% endblock content %}

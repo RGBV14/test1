@@ -1,15 +1,38 @@
-{% include 'app/base.html' %}
+<!DOCTYPE html>
 {% load static %}
-{% block content %}
-<br><br><br><br><br>
-<link rel="stylesheet" href="{% static 'css/event_list.css' %}">
-<a href="{% url 'event_create' %}">+ Add Event</a>
-{% for Events in Event %}
-    <div class="post-entry">
-        <h2><a href="{% url 'event_detail' Events.pk %}">{{ Events.title }}</a></h2>
-        <p>{{ Events.description }}</p>
+{% include 'app/navbar.html' %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/event_list.css' %}">
+    <title>Services</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="service-wrapper">
+        <h1> Volunteer Registration</h1>
+        <img src="{% static '/images/cleanup1.jpg' %}" alt="volunteerregistration" />
+        <button class="open-modal-button" id="open-modal">Fill Up Registration</button>
     </div>
-{% empty %}
-    <p>No event available. <a href="{% url 'event_create' %}">Add a new event</a>!</p>
-{% endfor %}
-{% endblock content %}
+</div>
+
+<!-- Modal -->
+<div id="volunteerregistration-modal" class="modal">
+    <div class="modal-content">
+        <p>Let's Volunteer</p>
+        <button class="add-button" onclick="window.location.href='{% url 'add_volunteerregistration' %}'">Add</button>
+    </div>
+</div>
+
+<script>
+    // Open the modal when the button is clicked
+    document.getElementById('open-modal').addEventListener('click', function() {
+        document.getElementById('volunteerregistration-modal').style.display = 'flex';
+    });
+</script>
+
+</body>
+</html>

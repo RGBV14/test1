@@ -12,8 +12,8 @@ body {
 }
 
 .navbar {
-    background: #2C6975;
-    height: 80px;
+    background: #123524;
+    height: 60px;
     width: 100%;
     position: fixed;
     top: 0;
@@ -28,7 +28,6 @@ body {
 .site-logo {
     color: white;
     font-size: 20px;
-    font-weight: bold;
     line-height: 50px;
     padding: 0 20px;
     text-transform: uppercase;

@@ -1,0 +1,145 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1, h2 {
+    color: #123524;
+    font-weight: bold;
+    margin-bottom: 25px; /* Increased margin for more spacing */
+}
+
+p {
+    font-size: 1.3rem; /* Increased font size */
+    line-height: 1.7; /* Increased line-height for better readability */
+    color: #333;
+}
+
+/* About Section Styles */
+.about-section {
+    background-color: #e0f0f3;
+    padding: 50px; /* Increased padding */
+    margin: 50px 0 30px 0; /* Increased top margin to push content down */
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Increased shadow for more depth */
+    text-align: center;
+}
+
+.about-section h1 {
+    font-size: 2.5rem; /* Increased font size */
+    margin-bottom: 20px; /* Increased margin */
+}
+
+.about-section p {
+    font-size: 1.2rem; /* Increased font size */
+    margin-bottom: 15px; /* Increased margin */
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 40px 0 40px 0; /* Increased margin for more space between sections */
+    background-color: white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Increased shadow for more depth */
+    border-radius: 10px; /* Slightly rounded corners */
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 15px; /* Increased padding for larger space */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #123524;
+    color: white;
+    font-weight: bold;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Table Actions Column */
+table th:last-child, table td:last-child {
+    text-align: center;
+}
+
+table a {
+    text-decoration: none;
+    color: #123524;
+    font-weight: bold;
+    margin: 0 7px; /* Increased margin for more spacing */
+}
+
+table a:hover {
+    color: #ff9800;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 15px; /* Increased padding */
+    }
+
+    .about-section {
+        padding: 35px; /* Increased padding */
+        margin-top: 40px; /* Increased top margin */
+    }
+
+    h1, h2 {
+        font-size: 1.6rem; /* Increased font size */
+    }
+
+    .about-section h1 {
+        font-size: 2rem; /* Increased font size */
+    }
+
+    .about-section p {
+        font-size: 1.1rem; /* Increased font size */
+    }
+
+    table th, table td {
+        padding: 12px; /* Increased padding */
+    }
+
+    table {
+        font-size: 1rem; /* Increased font size */
+    }
+
+    table thead th {
+        font-size: 1.1rem; /* Increased font size */
+    }
+
+    table tbody tr td {
+        font-size: 1rem; /* Increased font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .about-section h1 {
+        font-size: 1.8rem; /* Increased font size */
+    }
+
+    .about-section p {
+        font-size: 1rem; /* Increased font size */
+    }
+
+    table {
+        font-size: 0.95rem; /* Slightly larger font size */
+    }
+
+    table th, table td {
+        padding: 10px; /* Slightly larger padding */
+    }
+
+    table tbody tr td {
+        font-size: 0.95rem; /* Slightly larger font size */
+    }
+}

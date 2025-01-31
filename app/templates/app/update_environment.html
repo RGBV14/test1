@@ -1,0 +1,39 @@
+{% load static %}
+<head>
+    <title>Update Environmental Resource</title>
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+</head>
+{% block content %}
+    <div class="form-container">
+        <div class="header">
+            <h1>Update Environmental Resource</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">
+                <i class="ri-close-line"></i>
+            </a>
+        </div>
+        <p class="intro-text">Please update the details below for the Environmental Resource.</p>
+        <form action="{% url 'update_environment' object.pk %}" method="post">
+            {% csrf_token %}
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="{{ environmentalresource.title }}">
+            {% for error in form.title.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="content">Content:</label>
+            <input type="text" id="content" name="content" value="{{ environmentalresource.content }}">
+            {% for error in form.content.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="resource_type">Resource Type:</label>
+            <input type="text" id="resource_type" name="resource_type" value="{{ environmentalresource.resource_type }}">
+            {% for error in form.resource_type.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+        <input type="submit" value="Save">
+            <a href="/database">Back</a>
+        </form>
+    </div>
+{% endblock content %}

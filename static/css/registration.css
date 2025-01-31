@@ -1,0 +1,115 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #123524;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.login {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #123524; /* Dark Green */
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch; /* Ensure labels and inputs align properly */
+}
+
+label {
+    font-size: 1rem;
+    color: #123524; /* Dark Green */
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 100%; /* Make input fields stretch to fill available space */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #123524;
+}
+
+input[type="submit"] {
+    background-color: #123524;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Ensure button stretches to the full width */
+}
+
+input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.register-link {
+    font-size: 1rem;
+    color: #123524;
+    text-decoration: none;
+    display: block;
+    margin-top: 15px;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+small {
+    font-size: 0.875rem;
+    color: red;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    input[type="submit"] {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .form-container {
+        gap: 15px;
+    }
+}

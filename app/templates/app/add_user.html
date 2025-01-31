@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clean Up Community</title>
+    <link rel="stylesheet" href="{% static 'css/admin_user.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>User Form</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">back</a>
+        </div>
+        <p class="intro-text">Please fill in the details below to add new user.</p>
+        <form id="userForm" action="{% url 'add_user' %}" method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            {% for error in form.name.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
+            {% for error in form.email.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password">
+            {% for error in form.password.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+
+        <input type="submit" value="Save">
+        <a href="/database">Back</a>
+
+        </form>
+    </div>
+</body>
+</html>

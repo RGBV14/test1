@@ -1,0 +1,13 @@
+{% load static %}
+{% block content %}
+<div class="container">
+    <link rel="stylesheet" href="{% static 'css/delete_user.css' %}">
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete {{ object }}?</p>
+    <form action="{% url 'delete_user' object.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, Delete</button>
+    </form>
+    <a href="{% url 'database' %}">Cancel</a>
+</div>
+{% endblock content %}

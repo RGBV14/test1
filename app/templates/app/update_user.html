@@ -1,0 +1,39 @@
+{% load static %}
+<head>
+    <title>Update User</title>
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+</head>
+{% block content %}
+    <div class="form-container">
+        <div class="header">
+            <h1>Update User</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">
+                <i class="ri-close-line"></i>
+            </a>
+        </div>
+        <p class="intro-text">Please update the details below for the user.</p>
+        <form action="{% url 'update_user' object.pk %}" method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ user.name }}">
+            {% for error in form.name.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" value="{{ user.email }}">
+            {% for error in form.email.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password" value="{{ user.password }}">
+            {% for error in form.password.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+        <input type="submit" value="Save">
+            <a href="/database">Back</a>
+        </form>
+    </div>
+{% endblock content %}

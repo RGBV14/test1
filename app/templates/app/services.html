@@ -1,6 +1,53 @@
+<!DOCTYPE html>
 {% load static %}
 {% include 'app/navbar.html' %}
 {% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">s
     <link rel="stylesheet" href="{% static 'css/services.css' %}">
+</head>
+<body>
 
+    <div class="container">
+        <h1>Services</h1>
+
+        {% if user %}
+        <h2>Your Information</h2>
+        <p><strong>Name:</strong> {{ user.name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+
+        <h2>Your Registered Events</h2>
+        {% if volunteerregistration %}
+        <table class="volunteerregistration-table">
+            <thead>
+                <tr>
+                    <th>Event Title</th>
+                    <th>Task Assigned</th>
+                    <th>Registration Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for registration in volunteerregistration %}
+                <tr>
+                    <td>{{ registration.event.title }}</td>
+                    <td>{{ registration.task_assigned }}</td>
+                    <td>{{ registration.registration_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>You are not registered for any events.</p>
+        {% endif %}
+
+        {% else %}
+        <p>You must be logged in to view your information.</p>
+        {% endif %}
+    </div>
 {% endblock content %}
+</body>
+</html>

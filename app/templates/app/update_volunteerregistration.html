@@ -1,0 +1,40 @@
+{% load static %}
+<head>
+    <title>Update Volunteer Registration</title>
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+</head>
+{% block content %}
+    <div class="form-container">
+        <div class="header">
+            <h1>Update Volunteer Registration</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">
+                <i class="ri-close-line"></i>
+            </a>
+        </div>
+        <p class="intro-text">Please update the details below for the Volunteer Registration.</p>
+        <form action="{% url 'update_volunteerregistration' object.pk %}" method="post">
+            {% csrf_token %}
+            <label for="event">Event:</label>
+            {{ form.event }}
+            {% for error in form.event.errors %}
+                <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="user">User:</label>
+            {{ form.user }}
+            {% for error in form.user.errors %}
+                <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="task_assigned">Task Assigned:</label>
+            <input type="text" id="task_assigned" name="task_assigned" value="{{ form.task_assigned.value|default:'' }}">
+            {% for error in form.task_assigned.errors %}
+                <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+
+        <input type="submit" value="Save">
+            <a href="/database">Back</a>
+        </form>
+    </div>
+{% endblock content %}

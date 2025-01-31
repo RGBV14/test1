@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clean Up Community</title>
+    <link rel="stylesheet" href="{% static 'css/admin_impact.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>Impact Report Form</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">back</a>
+        </div>
+        <p class="intro-text">Please fill in the details below to add new user.</p>
+        <form id="impactreportForm" action="{% url 'add_impactreport' %}" method="post">
+            {% csrf_token %}
+            <label for="event">Event:</label>
+            {{ form.event }}
+            {% for error in form.event.errors %}
+                <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <!-- Waste Collected Field -->
+            <label for="waste_collected_kg">Waste Collected (Kg):</label>
+            <input type="number" id="waste_collected_kg" name="waste_collected_kg" step="0.01" min="0" value="{{ form.waste_collected_kg.value|default:'' }}">
+            {% for error in form.waste_collected_kg.errors %}
+                <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <!-- Participant Testimonials Field -->
+            <label for="participant_testimonials">Participant Testimonials:</label>
+            <input type="text" id="participant_testimonials" name="participant_testimonials" value="{{ form.participant_testimonials.value|default:'' }}">
+            {% for error in form.participant_testimonials.errors %}
+                <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+
+
+        <input type="submit" value="Save">
+        <a href="/database">Back</a>
+
+        </form>
+    </div>
+</body>
+</html>

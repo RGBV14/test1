@@ -1,0 +1,120 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    color: #123524;
+    font-weight: bold;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+/* Contact Form Styles */
+.contact-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-container p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 5px;
+    color: #123524;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #123524;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.submit-btn:hover {
+    background-color: #1e4f3d;
+}
+
+/* Contact Info Section */
+.contact-info {
+    margin-top: 40px;
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    input, textarea, button {
+        font-size: 1rem;
+        padding: 8px;
+    }
+
+    button.submit-btn {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .contact-container {
+        padding: 10px;
+    }
+
+    input, textarea, button {
+        font-size: 0.95rem;
+    }
+
+    button.submit-btn {
+        padding: 10px;
+    }
+}

@@ -1,0 +1,39 @@
+{% load static %}
+<head>
+    <title>Update Recognition</title>
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+</head>
+{% block content %}
+    <div class="form-container">
+        <div class="header">
+            <h1>Update Recognition</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">
+                <i class="ri-close-line"></i>
+            </a>
+        </div>
+        <p class="intro-text">Please update the details below for the Recognition.</p>
+        <form action="{% url 'update_recognition' object.pk %}" method="post">
+            {% csrf_token %}
+            <label for="user">User:</label>
+            {{ form.user }}
+            {% for error in form.user.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="event">Event:</label>
+            {{ form.event }}
+            {% for error in form.event.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="recognition_text">Recognition Text:</label>
+            <input type="text" id="recognition_text" name="recognition_text" value="{{ recognition.recognition_text }}">
+            {% for error in form.recognition_text.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+        <input type="submit" value="Save">
+            <a href="/database">Back</a>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,11 +1,9 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
-
 <nav class="navbar">
 
     <input type="checkbox" id="menu-toggle">
-
 
     <label for="menu-toggle" class="menu-icon">
         <i class="ri-menu-line"></i>
@@ -16,7 +14,7 @@
 
     <!-- Navigation Links -->
     <ul class="nav-links">
-        <li><a href="/">HOME</a></li>
+        <li><a href="/home">HOME</a></li>
         <li><a href= "/blog">BLOG</a></li>
         <li><a href="{% url 'services' %}">SERVICES</a></li>
         <li><a href="/about">ABOUT</a></li>

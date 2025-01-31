@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clean Up Community</title>
+    <link rel="stylesheet" href="{% static 'css/admin_event.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>Event Form</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">back</a>
+        </div>
+        <p class="intro-text">Please fill in the details below to add a new event.</p>
+        <form id="eventForm" action="{% url 'add_event' %}" method="post">
+            {% csrf_token %}
+             <label for="title">Choose Clean-Up Event Title:</label>
+            <select id="title" name="title">
+                <option value="Beach Clean-Up">Beach Clean-Up</option>
+                <option value="Park Clean-Up">Park Clean-Up</option>
+                <option value="Community Garden Planting">Community Garden Planting</option>
+                <option value="Neighborhood Clean-Up">Neighborhood Clean-Up</option>
+                <option value="River Clean-Up">River Clean-Up</option>
+            </select>
+            {% for error in form.title.errors %}
+                <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" value="{{ form.description.value|default:'' }}">
+            {% for error in form.description.errors %}
+                <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" value="{{ form.location.value|default:'' }}">
+            {% for error in form.location.errors %}
+                <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="event_date">Event Date:</label>
+            <input type="date" id="event_date" name="event_date" value="{{ form.event_date.value|default:'' }}">
+            {% for error in form.event_date.errors %}
+                <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="start_time">Start Time:</label>
+            <input type="time" id="start_time" name="start_time" value="{{ form.start_time.value|default:'' }}">
+            {% for error in form.start_time.errors %}
+                <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="end_time">End Time:</label>
+            <input type="time" id="end_time" name="end_time" value="{{ form.end_time.value|default:'' }}">
+            {% for error in form.end_time.errors %}
+                <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="max_volunteers">Max Volunteers:</label>
+            <input type="number" id="max_volunteers" name="max_volunteers" value="{{ form.max_volunteers.value|default:'' }}">
+            {% for error in form.max_volunteers.errors %}
+                <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <input type="submit" value="Save">
+            <a href="/database">Back</a>
+        </form>
+    </div>
+</body>
+</html>
